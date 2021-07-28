@@ -11,6 +11,7 @@ import { withRouter } from "next/router";
 
 const { Content } = Layout;
 
+// klo lu ga pengen pake template si one ini, tambahkan route yang diinginkan disini :
 const NonDashboardRoutes = [
   "/signin",
   "/signup",
