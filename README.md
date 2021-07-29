@@ -33,7 +33,8 @@ git remote remove origin
 @primary-color          : #fed45e;
 ```
 
-- config yg disana cuman yg dipake template, klo mau dilengkapi bisa kemari : <https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less>
+- config yg disana cuman yg dipake template, klo mau dilengkapi bisa kemari,
+<https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less>
 
 ## Untuk Sidebar
 
@@ -53,3 +54,5 @@ git remote remove origin
 
 - check it out :
 <https://github.com/DatasintesaID/templateone-fe.git>
+- url preview live buat template :
+<https://templateone-fe.vercel.app/>
