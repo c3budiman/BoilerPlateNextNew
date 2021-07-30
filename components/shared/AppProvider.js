@@ -99,6 +99,10 @@ const reducer = (state, action) => {
       const settings = JSON.parse(localStorage.getItem("settings"));
       return { ...state, mobile: !mql.matches, ...settings };
     }
+    case "showLoading":
+      return { ...state, loading: true };
+    case "hideLoading":
+      return { ...state, loading: false };
     default:
       return state;
   }
@@ -113,11 +117,12 @@ const AppProvider = props => {
     sidebarPopup: false,
     sidebarIcons: true,
     collapsed: false,
-    weakColor: true,
+    weakColor: false,
     optionDrawer: false,
     mobileDrawer: false,
     fullscreen: false,
-    direction: 'ltr'
+    direction: 'ltr',
+    loading: false,
   });
 
   useEffect(() => {

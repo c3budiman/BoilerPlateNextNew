@@ -1,6 +1,6 @@
 import { Container, Inner } from "./styles/Page";
 import { Layout, Spin } from "antd";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 import Header from "./Header";
 import SidebarMenu from "./SidebarMenu";
@@ -21,18 +21,18 @@ const NonDashboardRoutes = [
 ];
 
 const Page = ({ router, children }) => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [state] = useAppState();
   const isNotDashboard = NonDashboardRoutes.includes(router.pathname);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, [loading]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1000);
+  // }, [loading]);
 
   return (
-    <Spin tip="Loading..." size="large" spinning={loading}>
+    <Spin tip="Memuat..." size="large" spinning={state.loading}>
       <ThemeProvider theme={theme}>
         <Container
           className={`${state.weakColor ? "weakColor" : ""} ${
