@@ -98,7 +98,7 @@ const ProblemsPage = () => {
 
     const popOverTitle = (
         <a style={{ float: "right" }} onClick={() => setPopoverVisible(false)}>
-            <img src="/images/icon/silang.svg" />
+            <img alt="silang" src="/images/icon/silang.svg" />
         </a>
     )
 
@@ -170,7 +170,7 @@ const ProblemsPage = () => {
                                 >
                                     <div className="wrapperFilter pointer">
                                         <p className="fontFilterWaktu">
-                                            &nbsp;Default &nbsp;&nbsp; <img style={{ paddingLeft: "40px", paddingRight: "10px" }} src="/images/icon/option.svg" />
+                                            &nbsp;Default &nbsp;&nbsp; <img alt="option" style={{ paddingLeft: "40px", paddingRight: "10px" }} src="/images/icon/option.svg" />
                                         </p>
                                     </div>
                                 </Popover>

@@ -54,7 +54,7 @@ class MyApp extends App {
 					<link rel="shortcut icon" href="/images/triangle.png" />
 					<title>Boiler Plate</title>
 					<link rel="preconnect" href="https://fonts.gstatic.com" />
-					<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito" />
+					<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=optional" />
 				</Head>
 				<AppProvider>
 					<Page>
