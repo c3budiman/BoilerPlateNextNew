@@ -8,7 +8,7 @@ const Container = styled.div`
   min-height: auto;
   max-height: 100vh;
   max-height: -webkit-fill-available;
-  background-color: #f0f0f0;
+  background-color: #f7f8fc;
   &.boxed {
     overflow: hidden;
     margin-right: auto;
@@ -39,7 +39,7 @@ const Inner = styled.div`
   margin: 0 auto;
   padding: 1.5rem;
   position: relative;
-  background-color: #f0f0f0;
+  background-color: #f7f8fc;
   min-height: ${props => `calc(100vh - ${props.theme.layoutHeaderHeight})`};
 `;
 

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Overview from '../components/Overview';
+// import Overview from '../components/Overview';
 import { useAppState } from "../components/shared/AppProvider";
 import { useEffect } from "react";
 
@@ -48,7 +48,6 @@ const OverviewPage = () => {
           </Button>
         </Col>
       </Row>
-      <Overview />
     </>
   );
 }

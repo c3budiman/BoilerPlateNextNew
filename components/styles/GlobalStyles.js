@@ -1,21 +1,35 @@
 import { createGlobalStyle } from "styled-components";
-import lessToJs from "less-vars-to-js";
-import { objectToCamelCase } from "../../lib/helpers";
-import paletteLess from "!!raw-loader!../../assets/antd-custom.less";
 
-const lessVariables = lessToJs(paletteLess, {
-    resolveVariables: true,
-    stripPrefix: true
-  }),
-  camelCasedVariables = objectToCamelCase(lessVariables),
-  theme = {
-    ...camelCasedVariables
-  };
+const theme = {
+  "primaryColor": "#007bff",
+  "infoColor": "#1890ff",
+  "successColor": "#52c41a",
+  "processingColor": "#1890ff",
+  "errorColor": "#f5222d",
+  "highlightColor": "#f5222d",
+  "warningColor": "#faad14",
+  "normalColor": "#d9d9d9",
+  "backgroundColor": "#f7f7f9",
+  "darkColor": "rgb(51, 51, 51)",
+  "textColor": "rgba(0, 0, 0, 0.65)",
+  "textColorSecondary": "rgba(0, 0, 0, 0.45)",
+  "borderRadiusBase": "4px",
+  "borderRadiusSm": "4px",
+  "borderColorBase": "hsv(0, 0, 85%)",
+  "borderColorSplit": "rgba(0, 0, 0, 0.05)",
+  "fontFamily": "Nunito, \"Chinese Quote\", -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\",\n  \"Helvetica Neue\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\",\n  \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+  "codeFamily": "\"Anonymous Pro\", \"SFMono-Regular\", Consolas, \"Liberation Mono\",\n  Menlo, Courier, monospace",
+  "menuInlineToplevelItemHeight": "40px",
+  "menuItemHeight": "40px",
+  "layoutHeaderBackground": "#ffffff",
+  "layoutHeaderHeight": "60px",
+  "cardPaddingBase": "16px",
+  "cardPaddingWider": "16px",
+  "menuDarkBg": "rgb(51, 51, 51)",
+  "menuDarkSubmenuBg": "rgb(51, 51, 51)"
+}
 
 const GlobalStyles = createGlobalStyle`
-  @import url('/app.css');
-  @import url('/nprogress.css');
-
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -272,6 +286,10 @@ const GlobalStyles = createGlobalStyle`
 
   .border-white {
     border-color: #fff !important;
+  }
+
+  .colorWhite {
+    color: #fff;
   }
 
   .rounded {
@@ -1843,6 +1861,85 @@ const GlobalStyles = createGlobalStyle`
 
   .am-weather-cloud-2 > path, [id^=cloudy-day-] > path {
     stroke-width: 0;
+  }
+  .ant-menu-vertical .ant-menu-item::after,
+  .ant-menu-vertical-left .ant-menu-item::after,
+  .ant-menu-vertical-right .ant-menu-item::after,
+  .ant-menu-inline .ant-menu-item::after {
+    left: 0;
+    right: auto;
+    border-right: 3px solid #33539E;
+  }
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #fff;
+  }
+  .ant-menu-item-selected a, .ant-menu-item-selected a:hover {
+    color: #33539E;
+  }
+  .ant-menu-item-selected {
+    color: unset;
+  }
+  .headerPage {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    color: #33539E;
+  }
+  .btnBlue {
+    background: #33539E;
+    color: #fff;
+    border: none;
+  }
+  .btnBlue:hover, .btnBlue:focus, .btnBlue:active{
+    background: #33539E;
+    color: #fff;
+    border: none;
+  }
+  .btnGrey {
+    background: #B2B8BF;
+    color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  .btnGrey:hover, .btnGrey:focus, .btnGrey:active{
+    background: #B2B8BF;
+    color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  .btnOrange {
+    background: #FEB800;
+    color: #0B162B;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  .btnOrange:hover, .btnOrange:focus, .btnOrange:active{
+    background: #FEB800;
+    color: #0B162B;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  .btnGreen {
+    background: #00BB8C;
+    color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  .btnGreen:hover, .btnGreen:focus, .btnGreen:active{
+    background: #00BB8C;
+    color: #fff;
+    padding-left: 60px;
+    padding-right: 60px;
+    border: none;
+  }
+  .pointer {
+    cursor: pointer;
   }
 `;
 

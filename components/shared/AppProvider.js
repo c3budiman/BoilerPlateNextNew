@@ -30,7 +30,7 @@ const reducer = (state, action) => {
         element.requestFullScreen ||
         element.webkitRequestFullScreen ||
         element.mozRequestFullScreen ||
-        function() {
+        function () {
           return false;
         };
 
@@ -38,7 +38,7 @@ const reducer = (state, action) => {
         document.cancelFullScreen ||
         document.webkitCancelFullScreen ||
         document.mozCancelFullScreen ||
-        function() {
+        function () {
           return false;
         };
 

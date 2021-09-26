@@ -10,6 +10,7 @@ const DashHeader = styled.div`
     min-height: 60px;
     z-index: 11;
     padding: 0 .3rem;
+    background: #fff;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.02);
   }
   .trigger {

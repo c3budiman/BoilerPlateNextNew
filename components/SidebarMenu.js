@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import {
   Avatar,
   Badge,
@@ -85,14 +86,24 @@ const SidebarContent = ({
         openKeys={openKeys}
         onOpenChange={onOpenChange}
       >
+        <div style={{ margin: "40px 0px" }} className="nmsLogoDiv">
+          <center>
+            {
+              !state.collapsed ?
+                <img src="/images/logo/bakti.svg" alt="Bakti Logo" /> :
+                <img height="35px" src="/images/logo/mini-bakti.svg" alt="Bakti Logo" />
+            }
+          </center>
+        </div>
         {appRoutes.map((route, index) => {
           const hasChildren = route.children ? true : false;
+          const isCurrentPath = pathname.indexOf(lowercase(route.name)) > -1;
           if (!hasChildren)
             return (
               <Menu.Item
                 key={getKey(route.name, index)}
                 className={
-                  pathname === route.path ? 'ant-menu-item-selected' : ''
+                  isCurrentPath ? 'ant-menu-item-selected' : ''
                 }
                 onClick={() => {
                   setOpenKeys([getKey(route.name, index)]);
@@ -115,9 +126,9 @@ const SidebarContent = ({
                 key={getKey(route.name, index)}
                 icon={sidebarIcons && route.icon}
                 title={<>
-                    <span>{capitalize(route.name)}</span>
-                    {route.badge && badgeTemplate(route.badge)}
-                  </>
+                  <span>{capitalize(route.name)}</span>
+                  {route.badge && badgeTemplate(route.badge)}
+                </>
                 }
               >
                 {route.children.map((subitem, index) => (
@@ -181,16 +192,16 @@ const SidebarContent = ({
                   maxHeight: `-webkit-fill-available`,
                 }}
               >
-                <DashHeader>
+                {/* <DashHeader>
                   <Header>
                     <Link href="/">
                       <a className="brand mx-3">
-                        <PlaySquareTwoTone style={{fontSize: '20px'}} />
+                        <PlaySquareTwoTone style={{ fontSize: '20px' }} />
                         <strong className="text-black pl-2">{state.name}</strong>
                       </a>
                     </Link>
                   </Header>
-                </DashHeader>
+                </DashHeader> */}
                 {menu}
               </div>
             </Inner>

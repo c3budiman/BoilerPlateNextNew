@@ -42,10 +42,23 @@ const Sidebar = styled.div`
   // fill icon fix
   .bg-dark .sidebar li:not(.ant-menu-item-selected) svg > path:nth-child(1),
   .bg-dark .sidebar li:not(.ant-menu-item-selected) svg > path:nth-child(3) {
-    fill: rgba(60,60,60,1) ;
+    fill: #A5A5A5;
   }
   .bg-dark .sidebar li:not(.ant-menu-item-selected) svg > path:nth-child(4) {
-    fill: rgba(65,65,65,1) ;
+    fill: #A5A5A5;
+  }
+  .sidebar li:not(.ant-menu-item-selected) svg > path:nth-child(1) {
+    fill: #A5A5A5;
+  }
+  .sidebar li:not(.ant-menu-item-selected) svg > path:nth-child(2) {
+    fill: #A5A5A5;
+  }
+
+  .sidebar li svg > path:nth-child(1) {
+    fill: #33539E;
+  }
+  .sidebar li svg > path:nth-child(2) {
+    fill: #33539E;
   }
 `;
 
