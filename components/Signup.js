@@ -4,6 +4,7 @@ import { EyeTwoTone, MailTwoTone, PlaySquareTwoTone, QuestionCircleTwoTone, Skin
 import Link from 'next/link';
 import Router from 'next/router';
 import styled from 'styled-components';
+import { PushNavigateTo } from '../utils/helpersBrowser';
 
 const FormItem = Form.Item;
 
@@ -25,7 +26,7 @@ const Signup = ({ form }) => (
       <div className="text-center mb-5">
         <Link href="/signup">
           <a className="brand mr-0">
-            <PlaySquareTwoTone style={{fontSize: '32px'}} />
+            <PlaySquareTwoTone style={{ fontSize: '32px' }} />
           </a>
         </Link>
         <h5 className="mb-0 mt-3">Sign up</h5>
@@ -40,7 +41,7 @@ const Signup = ({ form }) => (
           form.validateFields((err, values) => {
             if (!err) {
               Message.success('Account created. Please check your inbox!').then(
-                () => Router.push('/signin')
+                () => PushNavigateTo('/signin')
               );
             }
           });
@@ -51,7 +52,7 @@ const Signup = ({ form }) => (
             <span>
               Nickname&nbsp;
               <Tooltip title="What do you want others to call you?">
-                <QuestionCircleTwoTone style={{fontSize: '16px'}} />
+                <QuestionCircleTwoTone style={{ fontSize: '16px' }} />
               </Tooltip>
             </span>
           }
@@ -66,25 +67,25 @@ const Signup = ({ form }) => (
         >
           <Input
             prefix={
-              <SkinTwoTone style={{fontSize: '16px'}} />
+              <SkinTwoTone style={{ fontSize: '16px' }} />
             }
             placeholder="Nickname"
           />
         </FormItem>
 
         <FormItem label="Email" name="email" rules={[
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!'
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!'
-              }
-            ]}>
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!'
+          },
+          {
+            required: true,
+            message: 'Please input your E-mail!'
+          }
+        ]}>
           <Input
             prefix={
-              <MailTwoTone style={{fontSize: '16px'}} />
+              <MailTwoTone style={{ fontSize: '16px' }} />
             }
             type="email"
             placeholder="Email"
@@ -94,7 +95,7 @@ const Signup = ({ form }) => (
         <FormItem label="Password" name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
           <Input
             prefix={
-              <EyeTwoTone style={{fontSize: '16px'}} />
+              <EyeTwoTone style={{ fontSize: '16px' }} />
             }
             type="password"
             placeholder="Password"
@@ -102,23 +103,23 @@ const Signup = ({ form }) => (
         </FormItem>
 
         <FormItem label="Confirm password" name="confirm" rules={[
-              {
-                required: true,
-                message: 'Please confirm your password!'
-              },
-              {
-                validator: (rule, value, callback) => {
-                  if (value && value !== form.getFieldValue('password')) {
-                    callback("Passwords don't match!");
-                  } else {
-                    callback();
-                  }
-                }
+          {
+            required: true,
+            message: 'Please confirm your password!'
+          },
+          {
+            validator: (rule, value, callback) => {
+              if (value && value !== form.getFieldValue('password')) {
+                callback("Passwords don't match!");
+              } else {
+                callback();
               }
-            ]}>
+            }
+          }
+        ]}>
           <Input
             prefix={
-              <EyeTwoTone style={{fontSize: '16px'}} />
+              <EyeTwoTone style={{ fontSize: '16px' }} />
             }
             type="password"
             placeholder="Confirm password"

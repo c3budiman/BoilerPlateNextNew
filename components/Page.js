@@ -27,32 +27,6 @@ const Page = ({ router, children }) => {
   const [state, dispatch] = useAppState();
   const isNotDashboard = NonDashboardRoutes.includes(router.pathname);
 
-  useEffect(async () => {
-    if (!isNotDashboard) {
-      setLoading(true)
-
-      try {
-        var response = await FetcherGet("/api/getSession");
-        if (router.pathname == "/login") {
-          if (response.data.code == 0) {
-            window.location.href = "/"
-            router.replace("/")
-          }
-        } else {
-          if (response.data.code != 0) {
-            console.log(response)
-            router.push("/login?code=2")
-            // window.location.href = "/login?code=2"
-          }
-        }
-        setLoading(false)
-      } catch (error) {
-        router.push("/login?code=2")
-        setLoading(false)
-      }
-    }
-  }, []);
-
   return (
     <Spin tip="Memuat..." size="large" spinning={state.loading || loading}>
       <ThemeProvider theme={theme}>

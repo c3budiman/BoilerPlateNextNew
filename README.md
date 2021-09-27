@@ -96,6 +96,48 @@ import { FetcherPost } from "../utils/fetcher";
 var response = await FetcherPost("/api/loginDummy", values);
 ```
 
+### Untuk Navigation
+
+- import dlu function namanya PushNavigateTo atau ReplaceNavigateTo
+- PushNavigateTo akan stor history, jadi bisa di back oleh browser
+- ReplaceNavigateTo tidak akan stor history jadi tidak bisa di back. useful jika tidak ingin user back incidentally misal dia udah login, ga boleh dong balik lagi ke login setelah di dashboard.
+
+```js
+import { PushNavigateTo, ReplaceNavigateTo } from "../utils/helpersBrowser";
+
+if (response?.data?.code == 0) {
+  Message.success("Sign complete. Taking you to your dashboard!").then(() =>
+    ReplaceNavigateTo("/")
+  );
+}
+
+<a onClick={() => { PushNavigateTo('/forgot') }}> Forgot Password <a/>
+```
+
+### Untuk Sessions
+
+- import dlu function namanya handleSessions
+- param buat handleSessions adalah context, dan needlogin.
+- needlogin berguna jika ingin cek session tapi ga pengen di redirect ke /login klo doi belom login.
+- data sessionnya bisa di akses di props.session
+
+```js
+import { handleSessions } from "../utils/helpers";
+
+const SomePage = ({ session }) => {
+  // session dari user :
+  console.log(session)
+}
+
+// tempatkan dibawah sebelum export default
+export async function getServerSideProps(context) {
+  let checkSessions = await handleSessions(context, true);
+  return checkSessions;
+}
+
+export default SomePage;
+```
+
 ## ENV
 
 - gw gasuka bikin file .env, tapi klo lu mau bikin bisa. tapi klo lu males ugha, silahkan ke next.config.js terus tambahin deh suka suka lu kek contoh dibawah. yg di nextconfig.js tapi di push ke git karena ga diignore. dan di server di pull juga. jadi be careful jgn masukkan settingan yg berbau local kesini.
@@ -115,22 +157,16 @@ env: {
 - justify buat horizontal align bisa start, center, space-between dll
 
 ```js
-import { Row, Col } from 'antd';
+import { Row, Col } from "antd";
 
-<Row
-    type="flex"
-    align="middle"
-    justify="start"
-    gutter={[10,10]}
->
-  <Col xs={12} sm={12} md={12} lg={12} >
+<Row type="flex" align="middle" justify="start" gutter={[10, 10]}>
+  <Col xs={12} sm={12} md={12} lg={12}>
     some content here 50%
   </Col>
-  <Col xs={12} sm={12} md={12} lg={12} >
+  <Col xs={12} sm={12} md={12} lg={12}>
     some content here also 50%
   </Col>
-</Row>
-
+</Row>;
 ```
 
 ### Contributing
@@ -149,10 +185,10 @@ npm run initlint
 
 - baru lu boleh push ke sini. otherwise fix dlu error klean ye.
 
-## Useful References
+## References
 
-- Dokumentasi ANTD
-  <https://ant.design/components/overview/>
-- <https://github.com/DatasintesaID/templateone-fe.git>
-- url preview live buat template :
-  <https://templateone-fe.vercel.app/>
+- Dokumentasi React <https://reactjs.org/docs/getting-started.html>
+- Dokumentasi Next.js <https://nextjs.org/docs/getting-started>
+- Dokumentasi ANTD <https://ant.design/components/overview/>
+- Git template full yg tidak di optimize <https://github.com/DatasintesaID/templateone-fe.git>
+- url preview live buat template <https://templateone-fe.vercel.app/>

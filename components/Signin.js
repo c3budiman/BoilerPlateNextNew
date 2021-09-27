@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { useAppState } from './shared/AppProvider';
+import { ReplaceNavigateTo } from '../utils/helpers';
 
 const FormItem = Form.Item;
 
@@ -27,7 +28,7 @@ const Signin = ({ form }) => {
       <div className="text-center mb-5">
         <Link href="/signin">
           <a className="brand mr-0">
-            <PlaySquareTwoTone style={{fontSize: '32px'}} />
+            <PlaySquareTwoTone style={{ fontSize: '32px' }} />
           </a>
         </Link>
         <h5 className="mb-0 mt-3">Sign in</h5>
@@ -43,24 +44,24 @@ const Signin = ({ form }) => {
             if (!err) {
               Message.success(
                 'Sign complete. Taking you to your dashboard!'
-              ).then(() => Router.push('/'));
+              ).then(() => ReplaceNavigateTo('/'));
             }
           });
         }}
       >
         <FormItem label="Email" name="email" rules={[
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!'
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!'
-              }
-            ]}>
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!'
+          },
+          {
+            required: true,
+            message: 'Please input your E-mail!'
+          }
+        ]}>
           <Input
             prefix={
-              <MailTwoTone style={{fontSize: '16px'}} />
+              <MailTwoTone style={{ fontSize: '16px' }} />
             }
             type="email"
             placeholder="Email"
@@ -70,7 +71,7 @@ const Signin = ({ form }) => {
         <FormItem label="Password" name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
           <Input
             prefix={
-              <EyeTwoTone style={{fontSize: '16px'}} />
+              <EyeTwoTone style={{ fontSize: '16px' }} />
             }
             type="password"
             placeholder="Password"
@@ -100,7 +101,7 @@ const Signin = ({ form }) => {
       </Form>
     </Content>
   </Row>
-);
-          }
+  );
+}
 
 export default Signin;

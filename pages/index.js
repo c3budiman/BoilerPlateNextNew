@@ -4,8 +4,10 @@ import { useAppState } from "../components/shared/AppProvider";
 import { useEffect } from "react";
 
 import { Button, Row, Col, notification } from 'antd';
+import { handleSessions } from '../utils/helpers';
 
-const OverviewPage = () => {
+const OverviewPage = ({ session }) => {
+  // console.log(session)
   const [_state, dispatch] = useAppState();
 
   function showError() {
@@ -52,6 +54,9 @@ const OverviewPage = () => {
   );
 }
 
-
+export async function getServerSideProps(context) {
+  let checkSessions = await handleSessions(context);
+  return checkSessions;
+}
 
 export default OverviewPage;

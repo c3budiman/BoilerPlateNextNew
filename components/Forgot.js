@@ -4,6 +4,7 @@ import { MailTwoTone, PlaySquareTwoTone } from '@ant-design/icons';
 import Link from 'next/link';
 import Router from 'next/router';
 import styled from 'styled-components';
+import { PushNavigateTo } from '../utils/helpersBrowser';
 
 const FormItem = Form.Item;
 
@@ -25,7 +26,7 @@ const Forgot = ({ form }) => (
       <div className="text-center mb-5">
         <Link href="/forgot">
           <a className="brand mr-0">
-            <PlaySquareTwoTone style={{fontSize: '32px'}} />
+            <PlaySquareTwoTone style={{ fontSize: '32px' }} />
           </a>
         </Link>
         <h5 className="mb-0 mt-3">Recover your password</h5>
@@ -41,24 +42,24 @@ const Forgot = ({ form }) => (
             if (!err) {
               Message.success(
                 'Reset email sent. Please check your inbox!'
-              ).then(() => Router.push('/signin'));
+              ).then(() => PushNavigateTo('/login'));
             }
           });
         }}
       >
         <FormItem label="Email" name="email" rules={[
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!'
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!'
-              }
-            ]}>
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!'
+          },
+          {
+            required: true,
+            message: 'Please input your E-mail!'
+          }
+        ]}>
           <Input
             prefix={
-              <MailTwoTone style={{fontSize: '16px'}} />
+              <MailTwoTone style={{ fontSize: '16px' }} />
             }
             type="email"
             placeholder="Email"

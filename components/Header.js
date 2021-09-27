@@ -13,6 +13,7 @@ import { useAppState } from "./shared/AppProvider";
 import { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
+import { PushNavigateTo, ReplaceNavigateTo } from "../utils/helpersBrowser";
 
 const { SubMenu } = Menu;
 const { Header } = Layout;
@@ -24,20 +25,13 @@ const MainHeader = () => {
 	const doLogout = async () => {
 		// tinggal logout aj
 		var logout = await axios.get("/api/logout");
-		if (logout.data.code == 0) {
-			// window.location.href = "/login?code=1"
-			Router.push("/login?code=1");
+		if (logout?.data?.code == 0) {
+			ReplaceNavigateTo('/login?code=1')
 		}
 	};
 
 	const redirectProfile = async () => {
-		// ngapain logout ngabb ngabb wkwkwk
-		// if (logout.data.code == 0) {
-		// 	// window.location.href = "/login?code=1"
-		// 	// Router.push("/login?code=1")
-		// 	Router.push("/profile");
-		// }
-		Router.push("/profile");
+		PushNavigateTo('/profile');
 	};
 
 	const menuDesktop = (

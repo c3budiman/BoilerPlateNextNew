@@ -1,8 +1,5 @@
-import { Button, Checkbox, Form, Input, Message, Row, notification, Spin, Col } from 'antd';
-import { EyeTwoTone, MailTwoTone, CloudServerOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Message, Row, notification, Spin, Col } from 'antd';
 
-import Link from 'next/link';
-import Router from 'next/router';
 import styled from 'styled-components';
 // import { useAppState } from './shared/AppProvider';
 import { useAppState } from "../components/shared/AppProvider";
@@ -10,6 +7,7 @@ import { FetcherPost } from '../utils/fetcher';
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import Head from "next/head";
+import { PushNavigateTo, ReplaceNavigateTo } from '../utils/helpersBrowser';
 
 const FormItem = Form.Item;
 
@@ -64,7 +62,7 @@ const Signin = ({ form }) => {
         if (response?.data?.code == 0) {
             Message.success(
                 'Sign complete. Taking you to your dashboard!'
-            ).then(() => Router.replace('/'));
+            ).then(() => ReplaceNavigateTo('/'));
         }
     }
 
@@ -132,7 +130,7 @@ const Signin = ({ form }) => {
                             </FormItem>
                             <FormItem>
                                 <div style={{ float: "right" }}>
-                                    <a onClick={() => { Router.push('/forgot') }} style={{ color: "#33539E", fontSize: "12px", marginTop: "5px", fontWeight: "bold" }}>Lupa Password ?</a>
+                                    <a onClick={() => { PushNavigateTo('/forgot') }} style={{ color: "#33539E", fontSize: "12px", marginTop: "5px", fontWeight: "bold" }}>Lupa Password ?</a>
                                 </div>
                             </FormItem>
 
@@ -140,10 +138,9 @@ const Signin = ({ form }) => {
                             <FormItem name="remember" valuePropName="checked" initialValue={true}>
                                 <Row gutter={[20, 20]}>
                                     <Col xs={12} sm={12} md={12} lg={12} >
-                                        <Button onClick={() => { Router.push('/signup') }} type="primary" htmlType="button" block style={{ color: "#33539E", background: "transparent", border: "none", boxShadow: "none", fontSize: "12px", fontWeight: "bold" }}>
+                                        <Button onClick={() => { PushNavigateTo('/signup') }} type="primary" htmlType="button" block style={{ color: "#33539E", background: "transparent", border: "none", boxShadow: "none", fontSize: "12px", fontWeight: "bold" }}>
                                             Register
                                         </Button>
-                                        {/* <a onClick={() => { Router.push('/signup') }} className="text-center" style={{ color: "#33539E", fontSize: "12px", marginTop: "5px", fontWeight: "bold" }}>Lupa Password ?</a> */}
                                     </Col>
                                     <Col xs={12} sm={12} md={12} lg={12} >
                                         <Button style={{ background: "#33539E", borderColor: "#33539E", borderRadius: "20px" }} type="primary" htmlType="submit" block className="colorWhite">
@@ -152,15 +149,6 @@ const Signin = ({ form }) => {
                                     </Col>
                                 </Row>
                             </FormItem>
-
-                            {/* <div className="text-center">
-                    <small className="text-muted">
-                        <span>Don't have an account yet?</span>{' '}
-                        <Link href="/signup">
-                            <a>&nbsp;Create one now!</a>
-                        </Link>
-                    </small>
-                </div> */}
                         </Form>
                     </Content>
                 </Row>
