@@ -1,16 +1,12 @@
-import { Button, Menu, Form, Input, Message, Row, notification, Spin, Col, Dropdown } from 'antd';
-import { EyeTwoTone, MailTwoTone, CloudServerOutlined } from '@ant-design/icons';
+import { Button, Menu, Form, Input, Row, notification, Spin, Col, Dropdown } from 'antd';
 
-import Link from 'next/link';
-import Router from 'next/router';
 import styled from 'styled-components';
 // import { useAppState } from './shared/AppProvider';
 import { useAppState } from "../components/shared/AppProvider";
-import { FetcherPost } from '../utils/fetcher';
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
 import Head from "next/head";
 import { PushNavigateTo } from '../utils/helpersBrowser';
+import { handleSessions } from '../utils/helpers';
 
 const FormItem = Form.Item;
 
@@ -20,7 +16,7 @@ const Content = styled.div`
   min-width: 300px;
 `;
 
-const SignUp = ({ form }) => {
+const SignUp = ({ form, session }) => {
     const [state] = useAppState();
     const [loading, setLoading] = useState(false);
     const [passVisible, setPassVisible] = useState(false);
@@ -37,7 +33,11 @@ const SignUp = ({ form }) => {
 
     const [DrodpwnValue, setDrodpwnValue] = useState("");
 
-    const router = useRouter()
+    useEffect(() => {
+        if (session?.code == 0) {
+            PushNavigateTo('/')
+        }
+    }, [])
 
     function showError(msg) {
         notification["error"]({
@@ -231,6 +231,11 @@ const SignUp = ({ form }) => {
             </Spin>
         </>
     );
+}
+
+export async function getServerSideProps(context) {
+    let checkSessions = await handleSessions(context, false);
+    return checkSessions;
 }
 
 export default SignUp;

@@ -1,16 +1,12 @@
-import { Button, Checkbox, Form, Input, Message, Row, notification, Spin, Col } from 'antd';
-import { EyeTwoTone, MailTwoTone, CloudServerOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Row, notification, Spin, Col } from 'antd';
 
-import Link from 'next/link';
-import Router from 'next/router';
 import styled from 'styled-components';
 // import { useAppState } from './shared/AppProvider';
 import { useAppState } from "../components/shared/AppProvider";
-import { FetcherPost } from '../utils/fetcher';
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
 import Head from "next/head";
 import { PushNavigateTo } from '../utils/helpersBrowser';
+import { handleSessions } from '../utils/helpers';
 
 const FormItem = Form.Item;
 
@@ -20,21 +16,15 @@ const Content = styled.div`
   min-width: 300px;
 `;
 
-const Forgot = ({ form }) => {
+const Forgot = ({ form, session }) => {
     const [state] = useAppState();
     const [loading, setLoading] = useState(false);
-    const router = useRouter()
-    const { code } = router.query
 
     useEffect(() => {
-        console.log('code', code)
-        if (code == "2") {
-            showError("Harap Login terlebih dahulu.")
+        if (session?.code == 0) {
+            PushNavigateTo('/')
         }
-        if (code == "1") {
-            showSukses("Berhasil logout.")
-        }
-    }, [code])
+    }, [])
 
     function showError(msg) {
         notification["error"]({
@@ -73,14 +63,6 @@ const Forgot = ({ form }) => {
                 >
                     <Content>
                         <div className="text-center mb-5">
-                            {/* <Link href="/signin">
-                                <a className="brand mr-0">
-                                    <CloudServerOutlined style={{ fontSize: '32px', color: "#fff" }} />
-                                </a>
-                            </Link>
-                            <h5 className="mb-0 mt-3 colorWhite">Sign in</h5>
-
-                            <p className="colorWhite">get started with our service</p> */}
                             <img src="/images/logo/dtn.png" height="60px" alt="Dtn Logo" />
                         </div>
 
@@ -128,6 +110,11 @@ const Forgot = ({ form }) => {
             </Spin>
         </>
     );
+}
+
+export async function getServerSideProps(context) {
+    let checkSessions = await handleSessions(context, false);
+    return checkSessions;
 }
 
 export default Forgot;

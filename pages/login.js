@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import Head from "next/head";
 import { PushNavigateTo, ReplaceNavigateTo } from '../utils/helpersBrowser';
+import { handleSessions } from '../utils/helpers';
 
 const FormItem = Form.Item;
 
@@ -17,7 +18,7 @@ const Content = styled.div`
   min-width: 300px;
 `;
 
-const Signin = ({ form }) => {
+const Signin = ({ form, session }) => {
     const [state] = useAppState();
     const [loading, setLoading] = useState(false);
     const router = useRouter()
@@ -25,11 +26,16 @@ const Signin = ({ form }) => {
 
     useEffect(() => {
         console.log('code', code)
-        if (code == "2") {
-            showError("Harap Login terlebih dahulu.")
-        }
-        if (code == "1") {
-            showSukses("Berhasil logout.")
+        console.log(session);
+        if (session?.code == 0) {
+            PushNavigateTo('/')
+        } else {
+            if (code == "2") {
+                showError("Harap Login terlebih dahulu.")
+            }
+            if (code == "1") {
+                showSukses("Berhasil logout.")
+            }
         }
     }, [code])
 
@@ -155,6 +161,11 @@ const Signin = ({ form }) => {
             </Spin>
         </>
     );
+}
+
+export async function getServerSideProps(context) {
+    let checkSessions = await handleSessions(context, false);
+    return checkSessions;
 }
 
 export default Signin;
