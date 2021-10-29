@@ -1,4 +1,4 @@
-import { Button, Form, Input, Message, Row, notification, Spin, Col } from 'antd';
+import { Button, Form, Input, Row, notification, Spin, Col, message } from 'antd';
 
 import styled from 'styled-components';
 // import { useAppState } from './shared/AppProvider';
@@ -66,7 +66,7 @@ const Signin = ({ form, session }) => {
         console.log('response', response)
         setLoading(false)
         if (response?.data?.code == 0) {
-            Message.success(
+            message.success(
                 'Sign complete. Taking you to your dashboard!'
             ).then(() => ReplaceNavigateTo('/'));
         }

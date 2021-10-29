@@ -7,7 +7,8 @@ const moduleExports = {
     backend: "https://nms-poc-api.devlabs.id",
     APPNAME: "boiler next js",
     APPKEY: "sukasukawajaappkeynyaaapaanygpentingsusahdihack",
-  }
+  },
+  swcMinify: true
 };
 
 const SentryWebpackPluginOptions = {
