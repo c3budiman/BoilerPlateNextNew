@@ -28,7 +28,7 @@
     "react-to-print": "^2.13.0",
     "recharts": "^2.0.10",
     "sheetjs-style": "^0.15.7",
-    "socket.io-client": "^2.4.0",
+    "socket.io-client": "^3.0.0",
     "zabbix-promise": "^2.0.2"
   },
   "devDependencies": {
